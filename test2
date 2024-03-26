@@ -1,7 +1,7 @@
 import unittest
 import time
 from parameterized import parameterized
-from main import variant8
+from main import test2
 
 print("///2///")
 
