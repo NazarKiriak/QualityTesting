@@ -1,0 +1,59 @@
+import unittest
+import time
+from parameterized import parameterized
+from main import variant8
+
+print("///2///")
+
+class TestVariant8(unittest.TestCase):
+    def test_variant8_default(self):
+        self.assertEqual(variant8(True, 10, 20, 100), 267)
+
+    def test_variant8_with_parameters(self):
+        self.assertEqual(variant8(True, 10, 20), 238)
+        self.assertEqual(variant8(True, 10, 20, 100), 267)
+        self.assertEqual(variant8(False, 11, 20, 100), 267)
+        self.assertEqual(variant8(True, 11, 12, 100), 267)
+        self.assertEqual(variant8(True, 10, 20, 100), 267)
+        self.assertEqual(variant8(False, 10, 20, 100), 267)
+        self.assertEqual(variant8(True, 10, 20, 100), 267)
+print("///3///")
+
+class TestFixtureExample(unittest.TestCase):
+    def setUp(self):
+        print("Setting up the test environment")
+        self.data = variant8(True, 10, 20)
+    def tearDown(self):
+        print("Tearing down the test environment")
+        self.data = None
+    def test_method_1(self):
+        print("Running test method 1")
+        self.assertEqual(variant8(True, 10, 20, 100), 267)
+
+class TestExceptionExample(unittest.TestCase):
+    def test_raises_exception(self):
+        with self.assertRaises(ValueError):
+            int("Невірний аргумент")
+
+class TestTimerExample(unittest.TestCase):
+    def test_timer(self):
+        start_time = time.time()
+        time.sleep(2)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        self.assertLess(execution_time, 3, "Execution time exceeded 1 second")
+def add(a, b):
+    return a + b
+
+class TestParameterizedExample(unittest.TestCase):
+    @parameterized.expand([
+        (1, 2, 3),
+        (0, 0, 0),
+        (-1, 1,0),
+    ])
+    def test_add(self, a, b, expected):
+        result = add(a, b)
+        self.assertEqual(result, expected)
+
+if __name__ == '__main__':
+    unittest.main()
